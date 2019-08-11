@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+/*********************************** CUSTOM CSS ************************************************/
+
+.ui.inverted.menu { /* No border radisu */
+  border-radius: 0px !important;
+}
+
+.ui.menu .item:before { /* No border at buttons in menu */
+  display: none;
+}
