@@ -1,5 +1,5 @@
 import React from 'react'
-import AppBar from './AppBar';
+import AppBar from './AppBar'
 
 const Layout = ({children}) => {
     return(

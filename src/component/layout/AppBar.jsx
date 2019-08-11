@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Icon } from 'semantic-ui-react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 export default class AppBar extends Component {
   state = { activeItem: 'users' }
