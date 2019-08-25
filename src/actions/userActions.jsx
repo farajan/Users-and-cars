@@ -1,6 +1,6 @@
-import { FETCH_ALL_USERS } from './types';
-import axios from 'axios';
-import { API_BASE_URL } from '../constants';
+import { FETCH_ALL_USERS, FETCH_USER } from './types'
+import axios from 'axios'
+import { API_BASE_URL } from '../constants'
 
 
 export const fetchAllUsers = () => dispatch => {
@@ -9,5 +9,12 @@ export const fetchAllUsers = () => dispatch => {
     request.then(({data}) => {
         dispatch({type: FETCH_ALL_USERS, payload: data});
     });
+};
 
+export const fetchUserById = (id) => dispatch => {
+    const request = axios.get(`${API_BASE_URL}/user/getById/${id}`);
+
+    request.then(({data}) => {
+        dispatch({type: FETCH_USER, payload: data});
+    });
 };

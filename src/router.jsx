@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Users from './component/users';
 import Cars from './component/cars';
 import Layout from './component/layout';
-import SignIn from './component/signin';
-import Register from './component/register';
+import SignIn from './component/auth/signin';
+import Register from './component/auth/register';
+import User from './component/users/user';
 
 const Routes = () => {
     return (
@@ -15,6 +16,7 @@ const Routes = () => {
                 <Route path="/cars" component={Cars} />
                 <Route path="/signin" component={SignIn} />
                 <Route path="/register" component={Register} />
+                <Route path="/user/:id" component={User} />
             </Layout>
         </Router>
     );

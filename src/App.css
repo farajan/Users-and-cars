@@ -41,3 +41,7 @@
 .ui.menu .item:before { /* No border at buttons in menu */
   display: none;
 }
+
+.right.floated.content {
+  padding-top: 7px;
+}
