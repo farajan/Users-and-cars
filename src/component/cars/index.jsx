@@ -3,11 +3,14 @@ import { Header } from 'semantic-ui-react'
 import CarList from "./CarList"
 import { fetchAllCars } from "../../actions/carActions"
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 class Cars extends Component {
    
     componentDidMount() {
-        this.props.fetchAllCars();
+        if(_.isEmpty(this.props.carList)) {
+            this.props.fetchAllCars();
+        }
     }
 
     render() {

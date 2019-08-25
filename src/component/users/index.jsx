@@ -3,11 +3,14 @@ import { Header } from 'semantic-ui-react'
 import UserList from "./UserList"
 import { fetchAllUsers } from "../../actions/userActions"
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 class Users extends Component {
 
     componentDidMount() {
-        this.props.fetchAllUsers();
+        if(_.isEmpty(this.props.userList)) {
+            this.props.fetchAllUsers();
+        }
     }
 
     render() {
@@ -21,7 +24,7 @@ class Users extends Component {
 };
 
 const mapStateToProps = state => ({
-    userList: state.user.users,
+    userList: state.user,
 });
 
 export default connect(mapStateToProps, { fetchAllUsers })(Users);

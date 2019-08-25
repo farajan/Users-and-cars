@@ -8,12 +8,23 @@ class User extends Component {
 
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.props.fetchUserById(id);
+        if(!this.props.userList || !this.props.userList[id]) {
+            this.props.fetchUserById(id);
+        }
+    }
+
+    getUser = () => {
+        const {id} = this.props.match.params;
+        return this.props.userList ? this.props.userList[id] : null;
     }
 
     render() {
-        const { firstName, lastName, cars } = this.props.user;
+        const user = this.getUser();
+        if(!user) {
+            return '<Loading />';
+        }
 
+        const { firstName, lastName, cars } = user;
         return(
             <div>
                 <Header as='h2'>{`${firstName} ${lastName}`}</Header>
@@ -27,7 +38,7 @@ class User extends Component {
 };
 
 const mapStateToProps = state => ({
-    user: state.user.user
+    userList: state.user
 });
 
 export default connect(mapStateToProps, { fetchUserById })(User);

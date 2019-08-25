@@ -6,6 +6,7 @@ import Layout from './component/layout';
 import SignIn from './component/auth/signin';
 import Register from './component/auth/register';
 import User from './component/users/user';
+import Car from './component/cars/car';
 
 const Routes = () => {
     return (
@@ -17,6 +18,7 @@ const Routes = () => {
                 <Route path="/signin" component={SignIn} />
                 <Route path="/register" component={Register} />
                 <Route path="/user/:id" component={User} />
+                <Route path="/car/:id" component={Car} />
             </Layout>
         </Router>
     );
