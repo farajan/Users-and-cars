@@ -23,11 +23,13 @@ class Car extends Component {
             return '<Loading />';
         }
 
-        const { brand, model, color, horsepower, price, mileage } = car;
+        const { brand, model, color, horsepower, price, mileage, user } = car;
 
         return(
             <div>
                 <Header as='h2'>{`${brand} - ${model}`}</Header>
+
+                <Header as='h3'>In possession</Header>
             </div>
         );
     }

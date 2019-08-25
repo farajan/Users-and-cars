@@ -10,6 +10,9 @@ const CarItem = ({car}) => {
                 <List.Header>{car.brand}</List.Header>
                 {car.model}
             </List.Content>
+            <List.Content floated='right'>
+                {car.user ? 'Taken' : 'Free'}
+            </List.Content>
         </List.Item>
     );
 }
