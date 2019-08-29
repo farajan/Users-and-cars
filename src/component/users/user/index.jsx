@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import CarList from "../../cars/CarList"
 import { Header, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { fetchUserById } from '../../../actions/userActions'
 import UserCard from "./UserCard";
+import UsersCars from "./UsersCars";
 
 class User extends Component {
 
@@ -29,15 +29,17 @@ class User extends Component {
         return(
             <div>
                 <Header as='h2'>User profile</Header>
-                <Grid>
+                <Grid columns='equal'>
                     <Grid.Row columns={2}>
-                        <Grid.Column>
+                       
+                        <Grid.Column width={6}>
                             <UserCard user={user}/>
                         </Grid.Column>
-                        <Grid.Column>
-                            <Header as='h3'>{`${firstName}'s cars`}</Header>
-                            <CarList carList={cars} />
+                       
+                        <Grid.Column width={10}>
+                            <UsersCars firstName={firstName} cars={cars} />
                         </Grid.Column>
+                    
                     </Grid.Row>
                 </Grid>
             </div>

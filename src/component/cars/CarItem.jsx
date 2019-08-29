@@ -5,7 +5,14 @@ import { ACTIVE_LINK_CARS } from '../../constants'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
 import { connect } from 'react-redux'
 
-const CarItem = ({car, setActiveLink}) => {
+const CarItem = ({car, setActiveLink, displayRightContent}) => {
+    
+    const rightContent = 
+        displayRightContent ?
+            <List.Content floated='right'>
+                {car.user ? 'Taken' : 'Free'}
+            </List.Content> : null;
+
     return(
         <List.Item 
             key={car.id_car} 
@@ -18,9 +25,7 @@ const CarItem = ({car, setActiveLink}) => {
                 <List.Header>{car.brand}</List.Header>
                 {car.model}
             </List.Content>
-            <List.Content floated='right'>
-                {car.user ? 'Taken' : 'Free'}
-            </List.Content>
+            {rightContent}
         </List.Item>
     );
 }
