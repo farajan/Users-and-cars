@@ -5,6 +5,7 @@ import { fetchCarById } from '../../../actions/carActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
 import { ACTIVE_LINK_USERS } from "../../../constants"
 import { Link } from 'react-router-dom'
+import Loading from "../../Loading";
 
 class Car extends Component {
 
@@ -41,7 +42,7 @@ class Car extends Component {
     render() {
         const car = this.getCar();
         if(!car) {
-            return '<Loading />';
+            return <Loading />;
         }
 
         const { brand, model, color, horsepower, price, mileage } = car;

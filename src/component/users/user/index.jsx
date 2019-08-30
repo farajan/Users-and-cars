@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchUserById } from '../../../actions/userActions'
 import UserCard from "./UserCard";
 import UsersCars from "./UsersCars";
+import Loading from "../../Loading";
 
 class User extends Component {
 
@@ -22,7 +23,7 @@ class User extends Component {
     render() {
         const user = this.getUser();
         if(!user) {
-            return '<Loading />';
+            return <Loading />;
         }
 
         const { firstName, cars } = user;
