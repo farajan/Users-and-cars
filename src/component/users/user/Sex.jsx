@@ -6,7 +6,7 @@ const Sex = ({sex}) => (
         <Header.Content>
         Sex
         <Header.Subheader>
-            <Icon name={sex==='Male' ? 'male' : 'female'} />
+            <Icon name={sex.toLowerCase()} />
             {` ${sex}`}
         </Header.Subheader>
         </Header.Content>

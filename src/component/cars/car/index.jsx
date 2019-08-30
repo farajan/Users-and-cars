@@ -1,11 +1,11 @@
 import React, { Component } from "react"
-import { Header } from 'semantic-ui-react'
+import { Header, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { fetchCarById } from '../../../actions/carActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
-import { ACTIVE_LINK_USERS } from "../../../constants"
-import { Link } from 'react-router-dom'
 import Loading from "../../Loading";
+import UserCard from "../../users/user/UserCard";
+import CarCard from "./CarCard";
 
 class Car extends Component {
 
@@ -29,12 +29,7 @@ class Car extends Component {
         return (
             <div>
                 <Header as='h3'>In possession</Header>
-                <Link 
-                    to={`/user/${user.id_user}`} 
-                    onClick={() => this.props.setActiveLink(ACTIVE_LINK_USERS)}
-                >
-                    {`${user.firstName} ${user.lastName}`}
-                </Link>
+                <UserCard user={user} />
             </div>
         );
     }
@@ -45,13 +40,22 @@ class Car extends Component {
             return <Loading />;
         }
 
-        const { brand, model, color, horsepower, price, mileage } = car;
-        
         return(
             <div>
-                <Header as='h2'>{`${brand} - ${model}`}</Header>
-                {`Color: ${color}, Horsepower: ${horsepower}HP, Price: ${price}$, Mileage: ${mileage}km`}
-                {this.renderUser(car)}
+                <Header as='h2'>{`${car.brand} - ${car.model}`}</Header>
+                <Grid>
+                    <Grid.Row columns={2}>
+                        
+                        <Grid.Column width={6}>
+                            <CarCard car={car}/>
+                        </Grid.Column>
+                        
+                        <Grid.Column width={10}>
+                            {this.renderUser(car)}
+                        </Grid.Column>
+                    
+                    </Grid.Row>
+                </Grid>
             </div>
         );
     }
