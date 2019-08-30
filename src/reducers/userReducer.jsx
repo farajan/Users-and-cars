@@ -1,18 +1,57 @@
-import { FETCH_USERS, FETCH_USER, CREATE_USER, UPDATE_USER, DELETE_USER } from '../actions/types'
+import { FETCH_USERS, FETCH_USER, CREATE_USER, UPDATE_USER, DELETE_USER, COUNT_CARS } from '../actions/types'
 import _ from 'lodash'
 
-export default (state = {}, action) => {
+const initialState = { 
+  userList: {},
+  carCount: null,
+};
+
+export default (state = initialState, action) => {
     switch (action.type) {
       case FETCH_USERS:
-        return { ...state, ..._.mapKeys(action.payload, 'id_user') };
+        return { 
+          ...state, 
+          userList: {
+            ..._.mapKeys(action.payload, 'id_user') 
+          }
+        };
+
       case FETCH_USER:
-        return { ...state, [action.payload.id_user]: action.payload };
+        return { 
+          ...state,
+          userList: { 
+            [action.payload.id_user]: action.payload 
+          }
+        };
+
       case CREATE_USER:
-        return { ...state, [action.payload.id_user]: action.payload };
+        return { 
+          ...state, 
+          userList: {
+            [action.payload.id_user]: action.payload 
+          }
+        };
+
       case UPDATE_USER:
-        return { ...state, [action.payload.id_user]: action.payload };
+        return { 
+          ...state, 
+          userList: {
+            [action.payload.id_user]: action.payload 
+          }
+        };
+
       case DELETE_USER:
-        return _.omit(state, action.payload);
+        return {
+          ...state,
+          userList: _.omit(state, action.payload)
+        };
+
+      case COUNT_CARS:
+        return {
+          ...state,
+          carCount: action.payload
+        };
+        
       default:
         return state;
     }

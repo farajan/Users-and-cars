@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Header, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { fetchCarById } from '../../../actions/carActions'
+import { countCars } from '../../../actions/userActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
 import Loading from "../../Loading";
 import UserCard from "../../users/user/UserCard";
@@ -13,6 +14,10 @@ class Car extends Component {
         const { id } = this.props.match.params;
         if(!this.props.carList || !this.props.carList[id]) {
             this.props.fetchCarById(id);
+        }
+
+        if(!this.props.carCount) {
+            this.props.countCars(id);
         }
     }
 
@@ -26,10 +31,12 @@ class Car extends Component {
             return null;
         }
 
+        
+
         return (
             <div>
                 <Header as='h3'>In possession</Header>
-                <UserCard user={user} />
+                <UserCard user={user} carCount={this.props.carCount} />
             </div>
         );
     }
@@ -46,11 +53,11 @@ class Car extends Component {
                 <Grid>
                     <Grid.Row columns={2}>
                         
-                        <Grid.Column width={6}>
-                            <CarCard car={car}/>
+                        <Grid.Column  className="car card">
+                            <CarCard car={car} />
                         </Grid.Column>
                         
-                        <Grid.Column width={10}>
+                        <Grid.Column>
                             {this.renderUser(car)}
                         </Grid.Column>
                     
@@ -62,7 +69,8 @@ class Car extends Component {
 };
 
 const mapStateToProps = state => ({
-    carList: state.car
+    carList: state.car,
+    carCount: state.user.carCount,
 });
 
-export default connect(mapStateToProps, { fetchCarById, setActiveLink })(Car);
+export default connect(mapStateToProps, { fetchCarById, setActiveLink, countCars })(Car);

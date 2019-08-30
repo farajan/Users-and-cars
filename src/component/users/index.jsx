@@ -21,7 +21,7 @@ class Users extends Component {
 };
 
 const mapStateToProps = state => ({
-    userList: state.user,
+    userList: state.user.userList,
 });
 
 export default connect(mapStateToProps, { fetchAllUsers })(Users);

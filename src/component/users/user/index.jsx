@@ -34,7 +34,7 @@ class User extends Component {
                     <Grid.Row columns={2}>
                        
                         <Grid.Column width={6}>
-                            <UserCard user={user}/>
+                            <UserCard user={user} carCount={cars.length}/>
                         </Grid.Column>
                        
                         <Grid.Column width={10}>
@@ -49,7 +49,7 @@ class User extends Component {
 };
 
 const mapStateToProps = state => ({
-    userList: state.user
+    userList: state.user.userList
 });
 
 export default connect(mapStateToProps, { fetchUserById })(User);

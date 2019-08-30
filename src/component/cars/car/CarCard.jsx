@@ -6,7 +6,7 @@ import Parameters from './Parameters';
 const CarCard = ({car}) => (
   <Card>
     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-    <Card.Content header={car.brand} />
+    <Card.Content header={`Brand: ${car.brand}`} description={`Model: ${car.model}`}/>
 
     <Card.Content>
         <Card.Meta>
