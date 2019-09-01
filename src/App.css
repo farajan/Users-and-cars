@@ -50,6 +50,6 @@
   margin-top: 10px;
 }
 
-.six.wide.column.car.card {
- margin-top: 33px; 
+.column.car.card {
+  top: 33px; 
 }

@@ -3,7 +3,9 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 import { Link } from 'react-router-dom'
 import { ACTIVE_LINK_REGISTER } from '../../constants'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
+import { signIn, fetchLoggedUser } from '../../actions/authActions'
 import { connect } from 'react-redux'
+import { validateEmail } from '../../utils'
 
 class SignIn extends Component {
 
@@ -17,17 +19,19 @@ class SignIn extends Component {
     };
 
     handleClick = () => {
-        console.log(`email: ${this.state.email}`);
-        console.log(`password: ${this.state.password}`);
-    };
-
-    validateEmail = () => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(this.state.email).toLowerCase());
+        const signInBody = `username=${this.state.email}&password=${this.state.password}&remember-me=on&submit=Login`;
+        this.props.signIn(signInBody, (success) => {
+            if(success) {
+                this.props.fetchLoggedUser(() => null);
+                this.props.history.push('/');
+            } else {
+                console.log("Login error"); //TODO
+            }
+        });
     };
 
     render() {
-        const { password } = this.state;
+        const { email, password } = this.state;
         return(
             <Grid textAlign='center' style={{ height: '100vh', marginTop: '10%' }} >
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -42,7 +46,7 @@ class SignIn extends Component {
                             iconPosition='left' 
                             placeholder='E-mail address' 
                             name='email'
-                            error={!this.validateEmail() && this.state.email.length > 0}
+                            error={!validateEmail(email) && email.length > 0}
                             onChange={(e) => this.handleChange(e)}
                         />
                         <Form.Input
@@ -59,8 +63,8 @@ class SignIn extends Component {
                             fluid
                             color='green' 
                             size='large' 
-                            disabled={password.length < 8 || !this.validateEmail()}
-                            onClick={() => this.handleClick()}>
+                            disabled={password.length < 8 || !validateEmail(email)}
+                            onClick={this.handleClick}>
                                 Login
                         </Button>
                     </Segment>
@@ -74,4 +78,4 @@ class SignIn extends Component {
     }
 }
 
-export default connect(null, { setActiveLink })(SignIn)
+export default connect(null, { setActiveLink, signIn, fetchLoggedUser })(SignIn)

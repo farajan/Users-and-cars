@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Header, Icon } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import Price from './Price';
 import Parameters from './Parameters';
 

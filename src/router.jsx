@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Users from './component/users';
 import Cars from './component/cars';
 import Layout from './component/layout';
-import SignIn from './component/auth/signin';
+import SignIn from './component/auth/signIn';
 import Register from './component/auth/register';
 import User from './component/users/user';
 import Car from './component/cars/car';

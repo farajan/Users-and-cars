@@ -15,3 +15,6 @@ export const DELETE_CAR = 'DELETE_CAR';
 
 /*-------------------------------------- URL Active Link --------------------------------------*/
 export const SET_ACTIVE_LINK = 'SET_ACTIVE_LINK';
+
+/*-------------------------------------- Login ------------------------------------------------*/
+export const FETCH_LOGGED_USER = 'FETCH_LOGGED_USER';
