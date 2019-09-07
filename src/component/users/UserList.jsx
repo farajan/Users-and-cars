@@ -5,12 +5,8 @@ import UserItem from './UserItem'
 
 export default class UserList extends Component {
 
-    renderUser = (user) => {
-        return(
-            <UserItem user={user} key={user.id_user}/>
-        );
-    };
-    
+    renderUser = (user) => <UserItem user={user} key={user.id_user}/>
+
     render() {
         return(
             <List divided celled link selection>

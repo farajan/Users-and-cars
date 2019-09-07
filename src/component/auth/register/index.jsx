@@ -9,9 +9,7 @@ class Register extends Component {
         active: [ true, false ],
     }
 
-    nextStep = () => {
-        this.setState({ active: [ false, true ] });
-    };
+    nextStep = () => this.setState({ active: [ false, true ] })
 
     render() {
         const { active } = this.state;

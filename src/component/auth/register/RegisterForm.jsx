@@ -20,17 +20,15 @@ class RegisterForm extends Component {
         showError: false,
     };
 
-    handleChange = ({target}) => {
-        this.setState({[target.name]: target.value});
-    };
+    handleChange = ({target}) => this.setState({[target.name]: target.value})
 
     signIn = (email, password) => {
         const { signIn, fetchLoggedUser, nextStep } = this.props;
         const signInBody = getSignInBody(email, password)
         
-        signIn(signInBody, () => {
-            fetchLoggedUser(() => nextStep());
-        });
+        signIn(signInBody, () => 
+            fetchLoggedUser(() => nextStep())
+        );
     };
 
     handleClick = () => {

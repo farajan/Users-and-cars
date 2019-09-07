@@ -3,14 +3,15 @@ import { Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
 import { connect } from 'react-redux'
-import { ACTIVE_LINK_USERS, ACTIVE_LINK_CARS, ACTIVE_LINK_SIGN_IN, ACTIVE_LINK_REGISTER } from '../../constants';
+import { ACTIVE_LINK_USERS, ACTIVE_LINK_CARS } from '../../constants';
+import { RightBarMenu } from './rightBarMenu';
 
 class AppBar extends Component {
 
   handleItemClick = (e, { name }) => this.props.setActiveLink(name)
 
   render() {
-    const { activeLink } = this.props;
+    const { isAuth, activeLink } = this.props;
 
     return (
         <Menu inverted size="tiny">
@@ -29,20 +30,11 @@ class AppBar extends Component {
                 onClick={this.handleItemClick}
                 as={Link} to='/cars'
             />
-            <Menu.Menu position="right">
-                <Menu.Item 
-                    name={ACTIVE_LINK_SIGN_IN} 
-                    onClick={this.handleItemClick}
-                    active={activeLink === ACTIVE_LINK_SIGN_IN}
-                    as={Link} to='/signin'
-                />
-                <Menu.Item 
-                    name={ACTIVE_LINK_REGISTER} 
-                    onClick={this.handleItemClick}
-                    active={activeLink === ACTIVE_LINK_REGISTER}
-                    as={Link} to='/register'
-                />
-            </Menu.Menu>
+            <RightBarMenu 
+                isAuth={isAuth}
+                handleClick={this.handleItemClick} 
+                activeLink={activeLink}
+            />
         </Menu>
     );
   }
@@ -50,6 +42,7 @@ class AppBar extends Component {
 
 const mapStateToProps = state => ({
     activeLink: state.activeLink,
+    isAuth: state.auth.isAuth,
 });
 
 export default connect(mapStateToProps, { setActiveLink })(AppBar);

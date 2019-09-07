@@ -39,13 +39,10 @@ class CompleteProfil extends Component {
         // this.fileUpload(this.state.file);
     };
 
-    handleSelectBirthday = (e, {value, name},) => {
-        this.setState({...this.state, birthday: { ...this.state.birthday, [name]: value }});
-    };
+    handleSelectBirthday = (e, {value, name},) => 
+        this.setState({...this.state, birthday: { ...this.state.birthday, [name]: value }})
 
-    handleSelectSex = (e, {value},) => {
-        this.setState({ sex: value});
-    };
+    handleSelectSex = (e, {value},) => this.setState({ sex: value})
 
     handleFileChange = e => {
         this.setState({ 
@@ -127,7 +124,7 @@ class CompleteProfil extends Component {
 };
 
 const mapStateToProps = state => ({
-    user: state.auth
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { updateUser })(CompleteProfil);

@@ -1,9 +1,24 @@
-import { FETCH_LOGGED_USER } from '../actions/types'
+import { FETCH_LOGGED_USER, SIGN_OUT } from '../actions/types'
 
-export default (state = {}, action) => {
+const initialState = { 
+  user: null,
+  isAuth: false,
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOGGED_USER:
-      return action.payload;
+      return {
+        user: action.payload,
+        isAuth: true
+      };
+
+    case SIGN_OUT:
+      return {
+        user: null,
+        isAuth: false
+      }
+
     default:
       return state;
   }

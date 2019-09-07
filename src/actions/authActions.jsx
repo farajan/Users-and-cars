@@ -1,4 +1,4 @@
-import { FETCH_LOGGED_USER } from './types'
+import { FETCH_LOGGED_USER, SIGN_OUT } from './types'
 import axios from 'axios'
 import { API_BASE_URL } from '../constants'
 
@@ -41,4 +41,14 @@ export const register = (user, callback) => () => {
         .catch(() => callback(false));
 
 };
+
+export const signOut = () => dispatch => {
+    const request = axios(`${API_BASE_URL}/logout`, {
+      method: 'post',
+      withCredentials: true
+    });  
+  
+    request.then(() => dispatch({type: SIGN_OUT}));
+};
+
 

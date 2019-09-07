@@ -16,9 +16,7 @@ class SignIn extends Component {
         showError: false,
     };
 
-    handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
-    };
+    handleChange = (e) => this.setState({[e.target.name]: e.target.value});
 
     handleClick = () => {
         const signInBody = getSignInBody(this.state.email, this.state.password);
