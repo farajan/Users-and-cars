@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { ACTIVE_LINK_REGISTER } from '../../constants'
+import { ACTIVE_LINK_REGISTER, ERROR_MESSAGE } from '../../constants'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
 import { signIn, fetchLoggedUser } from '../../actions/authActions'
 import { connect } from 'react-redux'
-import { validateEmail } from '../../utils'
+import { validateEmail, getSignInBody } from '../../utils'
+import CustomMessage from '../customUI/CustomMessage'
 
 class SignIn extends Component {
 
     state = {
         email: '',
         password: '',
+        showError: false,
     };
 
     handleChange = (e) => {
@@ -19,13 +21,13 @@ class SignIn extends Component {
     };
 
     handleClick = () => {
-        const signInBody = `username=${this.state.email}&password=${this.state.password}&remember-me=on&submit=Login`;
+        const signInBody = getSignInBody(this.state.email, this.state.password);
         this.props.signIn(signInBody, (success) => {
             if(success) {
                 this.props.fetchLoggedUser(() => null);
                 this.props.history.push('/');
             } else {
-                console.log("Login error"); //TODO
+                this.setState({showError: true});
             }
         });
     };
@@ -72,6 +74,12 @@ class SignIn extends Component {
                 <Message>
                     New to us? <Link to='/register' onClick={() => this.props.setActiveLink(ACTIVE_LINK_REGISTER)}>Sign Up</Link>
                 </Message>
+                <CustomMessage 
+                    messageType={ERROR_MESSAGE} 
+                    header="You have entered an invalid username or password."
+                    note="Please try it again."
+                    visible={this.state.showError} 
+                />
                 </Grid.Column>
             </Grid>
         );

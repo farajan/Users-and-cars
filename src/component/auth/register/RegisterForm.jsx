@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { setActiveLink } from '../../actions/urlActiveLinkActions'
+import { setActiveLink } from '../../../actions/urlActiveLinkActions'
 import { connect } from 'react-redux'
-import { ACTIVE_LINK_SIGN_IN } from '../../constants';
+import { ACTIVE_LINK_SIGN_IN, ERROR_MESSAGE } from '../../../constants'
+import CustomMessage from '../../customUI/CustomMessage'
+import { getSignInBody } from '../../../utils'
+import { signIn, register, fetchLoggedUser } from '../../../actions/authActions'
 
-class Register extends Component {
+class RegisterForm extends Component {
   
     state = {
         firstName: '',
@@ -14,18 +17,39 @@ class Register extends Component {
         password: '',
         password2: '',
         signature: false,
+        showError: false,
     };
 
     handleChange = ({target}) => {
         this.setState({[target.name]: target.value});
     };
 
+    signIn = (email, password) => {
+        const { signIn, fetchLoggedUser, nextStep } = this.props;
+        const signInBody = getSignInBody(email, password)
+        
+        signIn(signInBody, () => {
+            fetchLoggedUser(() => nextStep());
+        });
+    };
+
     handleClick = () => {
-        console.log(`password: ${this.state.firstName}`);
-        console.log(`password: ${this.state.lastName}`);
-        console.log(`email: ${this.state.email}`);
-        console.log(`password: ${this.state.password}`);
-        console.log(`password: ${this.state.signature}`);
+        this.props.nextStep();
+        // const { firstName, lastName, email, password } = this.state;
+        // const user = { 
+        //     "firstName": firstName,
+        //     "lastName": lastName,
+        //     "email": email,
+        //     "password": password
+        //  };
+
+        // this.props.register(user, (success) => {
+        //     if(success) {
+        //         this.signIn(email, password)
+        //     } else {
+        //         this.setState({showError: true});
+        //     }
+        //  });
     };
 
     validateForm = () => {
@@ -40,7 +64,7 @@ class Register extends Component {
 
     render() {
         return(
-            <Grid textAlign='center' style={{ height: '100vh', marginTop: '10%' }}>
+            <Grid textAlign='center' style={{ height: '100vh', marginTop: '5%' }}>
                 <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='green' textAlign='center'>
                     <Image src='/logo.png' /> Create your account
@@ -96,7 +120,7 @@ class Register extends Component {
                         fluid 
                         color='green' 
                         size='large' 
-                        disabled={!this.validateForm()}
+                        // disabled={!this.validateForm()}
                         onClick={() => this.handleClick()}
                     >
                             Create an account
@@ -106,10 +130,16 @@ class Register extends Component {
                 <Message>
                     Alredy registered? <Link to='/signin' onClick={() => this.props.setActiveLink(ACTIVE_LINK_SIGN_IN)}>Sign In</Link>
                 </Message>
+                <CustomMessage 
+                    messageType={ERROR_MESSAGE} 
+                    header="This email is already taken."
+                    note="Please try another one."
+                    visible={this.state.showError} 
+                />
                 </Grid.Column>
             </Grid>
         );
     }
 }
 
-export default connect(null, { setActiveLink })(Register)
+export default connect(null, { setActiveLink, register, signIn, fetchLoggedUser })(RegisterForm)

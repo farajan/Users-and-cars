@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchUserById } from '../../../actions/userActions'
 import UserCard from "./UserCard";
 import UsersCars from "./UsersCars";
-import Loading from "../../Loading";
+import Loading from "../../customUI/Loading";
 
 class User extends Component {
 

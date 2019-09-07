@@ -5,7 +5,7 @@ import { setActiveLink } from './actions/urlActiveLinkActions'
 import { fetchLoggedUser } from './actions/authActions'
 import { connect } from 'react-redux'
 import { ACTIVE_LINK_USERS, ACTIVE_LINK_CARS, ACTIVE_LINK_SIGN_IN, ACTIVE_LINK_REGISTER } from './constants';
-import Loading from './component/Loading';
+import Loading from './component/customUI/Loading';
 
 class App  extends Component {
 

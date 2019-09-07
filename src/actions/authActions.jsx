@@ -24,8 +24,21 @@ export const fetchLoggedUser = (callback) => dispatch => {
     request.then(({data}) => {
         dispatch({type: FETCH_LOGGED_USER, payload: data});
         callback();
-    }).catch(
-        callback()
-    ); 
+    }).catch((error) => {
+        callback();
+    }); 
+};
+
+export const register = (user, callback) => () => {
+    const request = axios(`${API_BASE_URL}/auth/register`, {
+        method: 'post',
+        data: user,
+        withCredentials: true
+    });
+
+    request
+        .then(() => callback(true))
+        .catch(() => callback(false));
+
 };
 

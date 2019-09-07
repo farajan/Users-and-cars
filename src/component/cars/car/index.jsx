@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchCarById } from '../../../actions/carActions'
 import { countCars } from '../../../actions/userActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
-import Loading from "../../Loading";
+import Loading from "../../customUI/Loading";
 import UserCard from "../../users/user/UserCard";
 import CarCard from "./CarCard";
 
