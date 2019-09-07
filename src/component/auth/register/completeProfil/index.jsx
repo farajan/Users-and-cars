@@ -67,7 +67,7 @@ class CompleteProfil extends Component {
             "Content-type": "multipart/form-data"
           }
         };
-        console.log(formData);
+        // console.log(formData);
       };
 
 

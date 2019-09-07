@@ -36,7 +36,7 @@ class Car extends Component {
         return (
             <div>
                 <Header as='h3'>In possession</Header>
-                <UserCard user={user} carCount={this.props.carCount} />
+                <UserCard user={user} carCount={this.props.carCount} setActiveLink={this.props.setActiveLink}/>
             </div>
         );
     }

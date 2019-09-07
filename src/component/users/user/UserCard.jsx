@@ -5,11 +5,16 @@ import Birthday from './Birthday'
 import Sex from './Sex'
 import ExtraContent from './ExtraContent'
 import { Link } from 'react-router-dom'
+import { LINK_USER } from '../../../constants';
 
-const UserCard = ({user, carCount}) => (
+const UserCard = ({user, carCount, setActiveLink}) => (
   <Card>
     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-    <Card.Content header={`${user.firstName} ${user.lastName}`} as={Link} to={`/user/${user.id_user}`}/>
+    <Card.Content 
+      header={`${user.firstName} ${user.lastName}`} 
+      as={Link} to={`${LINK_USER.link}/${user.id_user}`}
+      onClick={() => setActiveLink(LINK_USER.name)}
+    />
 
     <Card.Content>
       <Card.Meta>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { ACTIVE_LINK_REGISTER, ERROR_MESSAGE } from '../../constants'
+import { LINK_REGISTER, ERROR_MESSAGE } from '../../constants'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
 import { signIn, fetchLoggedUser } from '../../actions/authActions'
 import { connect } from 'react-redux'
@@ -70,7 +70,7 @@ class SignIn extends Component {
                     </Segment>
                 </Form>
                 <Message>
-                    New to us? <Link to='/register' onClick={() => this.props.setActiveLink(ACTIVE_LINK_REGISTER)}>Sign Up</Link>
+                    New to us? <Link to={LINK_REGISTER.link} onClick={() => this.props.setActiveLink(LINK_REGISTER.name)}>Sign Up</Link>
                 </Message>
                 <CustomMessage 
                     messageType={ERROR_MESSAGE} 

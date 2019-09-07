@@ -3,7 +3,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Checkbox } from 's
 import { Link } from 'react-router-dom'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
 import { connect } from 'react-redux'
-import { ACTIVE_LINK_SIGN_IN, ERROR_MESSAGE } from '../../../constants'
+import { LINK_SIGN_IN, ERROR_MESSAGE } from '../../../constants'
 import CustomMessage from '../../customUI/CustomMessage'
 import { getSignInBody } from '../../../utils'
 import { signIn, register, fetchLoggedUser } from '../../../actions/authActions'
@@ -126,7 +126,7 @@ class RegisterForm extends Component {
                     </Segment>
                 </Form>
                 <Message>
-                    Alredy registered? <Link to='/signin' onClick={() => this.props.setActiveLink(ACTIVE_LINK_SIGN_IN)}>Sign In</Link>
+                    Alredy registered? <Link to={LINK_SIGN_IN.link} onClick={() => this.props.setActiveLink(LINK_SIGN_IN.name)}>Sign In</Link>
                 </Message>
                 <CustomMessage 
                     messageType={ERROR_MESSAGE} 

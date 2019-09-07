@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { ACTIVE_LINK_CARS } from '../../constants'
+import { LINK_CARS, LINK_CAR } from '../../constants'
 import { setActiveLink } from '../../actions/urlActiveLinkActions'
 import { connect } from 'react-redux'
 
@@ -17,8 +17,8 @@ const CarItem = ({car, setActiveLink, displayRightContent}) => {
         <List.Item 
             key={car.id_car} 
             as={Link} name='profile' 
-            to={`/car/${car.id_car}`} 
-            onClick={() => setActiveLink(ACTIVE_LINK_CARS)}
+            to={`${LINK_CAR.link}/${car.id_car}`} 
+            onClick={() => setActiveLink(LINK_CAR.name)}
         >
             <Image avatar src='/images/avatar/small/helen.jpg'/>
             <List.Content>
