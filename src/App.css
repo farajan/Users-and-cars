@@ -50,6 +50,7 @@
   margin-top: 10px;
 }
 
+.ui.fluid.card.free.car,
 .column.car.card {
   top: 33px; 
 }
@@ -62,4 +63,12 @@
 .ui.icon.left.labeled.button.upload.button,
 .ui.negative.button.upload.button {
   margin-bottom: 5px;
+}
+
+.right.floated.content.car.red.right.content {
+  color: #C4314B;
+}
+
+.right.floated.content.car.green.right.content {
+  color: #92C353;
 }

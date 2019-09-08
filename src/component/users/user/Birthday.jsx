@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon, Header } from 'semantic-ui-react'
+import { formatDate } from '../../../utils';
 
 const Birthday = ({birthday}) => (
     <Header as='h5'>
@@ -7,10 +8,11 @@ const Birthday = ({birthday}) => (
         Birthday
         <Header.Subheader>
             <Icon name='birthday' />
-            {` ${birthday}`}
+            {` ${formatDate(birthday)}`}
         </Header.Subheader>
         </Header.Content>
     </Header>
 );
+
 
 export default Birthday;

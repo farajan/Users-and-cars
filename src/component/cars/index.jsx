@@ -14,7 +14,7 @@ class Cars extends Component {
         return(
             <div>
                 <Header as='h2'>Cars in database</Header>
-                <CarList carList={this.props.carList} displayRightContent={true}/>
+                <CarList carList={this.props.carList} displayFreeOrTaken={true}/>
            </div>
         );
     }

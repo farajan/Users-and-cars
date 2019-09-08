@@ -7,7 +7,7 @@ const UsersCars = ({firstName, cars}) => {
     return (
         <div>
             <Header content={`${firstName}${text}`} />
-            <CarList carList={cars} displayRightContent={false}/>
+            <CarList carList={cars} displayFreeOrTaken={false}/>
         </div>
     );
 };

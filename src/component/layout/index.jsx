@@ -6,7 +6,7 @@ const Layout = ({children}) => {
     return(
         <div>
             <AppBar />
-            <Container style={{ marginTop: '2em', marginLeft: '10%', marginRight: '10%' }}>
+            <Container style={{ marginTop: '2em', marginLeft: '10%', marginRight: '10%', marginBottom: '10%' }}>
                 {children}
             </Container>
         </div>

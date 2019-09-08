@@ -6,9 +6,9 @@ import CarItem from './CarItem'
 export default class CarList extends Component {
 
     renderCar = (car) => {
-        const { displayRightContent } = this.props;
+        const { displayFreeOrTaken } = this.props;
         return(
-            <CarItem car={car} key={car.id_car} displayRightContent={displayRightContent}/>
+            <CarItem car={car} key={car.id_car} displayFreeOrTaken={displayFreeOrTaken}/>
         );
     };
     

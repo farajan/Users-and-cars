@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { LINK_USER } from '../../../constants';
 
 const UserCard = ({user, carCount, setActiveLink}) => (
-  <Card>
+  <Card fluid>
     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
     <Card.Content 
       header={`${user.firstName} ${user.lastName}`} 

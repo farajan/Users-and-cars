@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_USER, COUNT_CARS, FETCH_LOGGED_USER } from './types'
+import { FETCH_USERS, FETCH_USER, COUNT_CARS, FETCH_LOGGED_USER, FETCH_CAR } from './types'
 import axios from 'axios'
 import { API_BASE_URL } from '../constants'
 
@@ -31,5 +31,13 @@ export const updateUser = (data) => dispatch => {
 
     request.then(({data}) => {
         dispatch({type: FETCH_LOGGED_USER, payload: data});
+    });
+}
+
+export const buyCar = (id_user, id_car) => dispatch => {
+    const request = axios.post(`${API_BASE_URL}/user/${id_user}/buyCar/${id_car}`);
+
+    request.then(({data}) => {
+        dispatch({type: FETCH_CAR, payload: data});
     });
 }
