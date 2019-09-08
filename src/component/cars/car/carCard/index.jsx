@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import Price from './Price';
 import Parameters from './Parameters';
+import SellCar from './SellCar';
 
 const CarCard = ({car}) => (
   <Card fluid>
@@ -14,6 +15,8 @@ const CarCard = ({car}) => (
             <Price price={car.price} />
         </Card.Meta>
     </Card.Content>
+
+    <SellCar id_car={car.id_car} user={car.user} />
   </Card>
 );
 

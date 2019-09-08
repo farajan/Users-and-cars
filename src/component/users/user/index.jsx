@@ -10,9 +10,7 @@ class User extends Component {
 
     componentDidMount() {
         const { id } = this.props.match.params;
-        if(!this.props.userList || !this.props.userList[id]) {
-            this.props.fetchUserById(id);
-        }
+        this.props.fetchUserById(id);
     }
 
     getUser = () => {

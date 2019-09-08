@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Header } from 'semantic-ui-react'
-import { formatLongNumber } from '../../../utils'
+import { formatLongNumber } from '../../../../utils'
 
 const Price = ({price}) => (
     <Header as='h5'>

@@ -14,8 +14,12 @@ class App  extends Component {
   }
 
   componentDidMount() {
-      this.props.fetchLoggedUser(() => this.setState({response: true}))
-      this.setActiveLink();      
+    this.props.fetchLoggedUser(() => this.setState({response: true}))
+    this.setActiveLink();      
+  }
+
+  componentDidUpdate() {
+    window.onpopstate  = () => this.setActiveLink();
   }
 
   setActiveLink = () => {

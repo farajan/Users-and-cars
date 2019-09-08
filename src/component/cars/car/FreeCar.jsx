@@ -5,11 +5,16 @@ import { LINK_SIGN_IN, LINK_REGISTER } from '../../../constants'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
+import { BuyCarModal } from './BuyCarModal';
 
 class FreeCar extends Component {
 
+    state = {
+        open: false,
+    };
+
     render() {
-        const { price, buyCar, id_user, id_car, setActiveLink, isAuth } = this.props;
+        const { price, setActiveLink, isAuth, buyCar, id_car, loggedUser: { id_user } } = this.props;
         return (
             isAuth ? 
                 <Card fluid className="free car">
@@ -20,9 +25,14 @@ class FreeCar extends Component {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button positive fluid onClick={() => buyCar(id_user, id_car)}>
+                    <Button positive fluid onClick={() => this.setState({ open: true })}>
                         Buy
                     </Button>
+                    <BuyCarModal 
+                        open={this.state.open} 
+                        handleClose={() => this.setState({ open: false })}
+                        hanndleSubmit={() => buyCar(id_user, id_car)}
+                    />
                 </Card.Content>
                 </Card>
             :
@@ -46,7 +56,7 @@ class FreeCar extends Component {
 };
 
 const mapStateToProps = state => ({
-    user: state.auth.user,
+    loggedUser: state.auth.user,
     isAuth: state.auth.isAuth,
 });
 

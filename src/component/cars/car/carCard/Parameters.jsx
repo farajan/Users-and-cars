@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Header } from 'semantic-ui-react'
-import { formatLongNumber, capitalizeFirstLetter } from '../../../utils'
+import { formatLongNumber, capitalizeFirstLetter } from '../../../../utils'
 
 const Parameters = ({horsepower, mileage, color}) => (
     <Header as='h5'>

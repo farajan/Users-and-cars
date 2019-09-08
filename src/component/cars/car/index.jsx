@@ -4,18 +4,16 @@ import { connect } from 'react-redux'
 import { fetchCarById } from '../../../actions/carActions'
 import { countCars, buyCar } from '../../../actions/userActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
-import Loading from "../../customUI/Loading";
-import UserCard from "../../users/user/UserCard";
-import CarCard from "./CarCard";
-import FreeCar from "./FreeCar";
+import Loading from "../../customUI/Loading"
+import UserCard from "../../users/user/UserCard"
+import CarCard from "./carCard"
+import FreeCar from "./FreeCar"
 
 class Car extends Component {
 
     componentDidMount() {
         const { id } = this.props.match.params;
-        if(!this.props.carList || !this.props.carList[id]) {
-            this.props.fetchCarById(id);
-        }
+        this.props.fetchCarById(id);
 
         if(!this.props.carCount) {
             this.props.countCars(id);
