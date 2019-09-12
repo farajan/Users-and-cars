@@ -11,10 +11,13 @@ export const fetchAllCars = () => dispatch => {
 
 };
 
-export const fetchCarById = (id) => dispatch => {
+export const fetchCarById = (id, callback) => dispatch => {
     const request = axios.get(`${API_BASE_URL}/car/getById/${id}`);
 
     request.then(({data}) => {
+        if(data.user) {
+            callback(data.user);
+        }
         dispatch({type: FETCH_CAR, payload: data});
     });
 };

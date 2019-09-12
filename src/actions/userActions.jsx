@@ -34,10 +34,13 @@ export const updateUser = (data) => dispatch => {
     });
 }
 
-export const buyCar = (id_user, id_car) => dispatch => {
+export const buyCar = (id_user, id_car, callback) => dispatch => {
     const request = axios.post(`${API_BASE_URL}/user/${id_user}/buyCar/${id_car}`);
 
     request.then(({data}) => {
+        if(data.user) {
+            callback(data.user);
+        }
         dispatch({type: FETCH_CAR, payload: data});
     });
 }

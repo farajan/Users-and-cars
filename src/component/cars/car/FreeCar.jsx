@@ -14,7 +14,7 @@ class FreeCar extends Component {
     };
 
     render() {
-        const { price, setActiveLink, isAuth, buyCar, id_car, loggedUser: { id_user } } = this.props;
+        const { price, setActiveLink, isAuth, buyCar, id_car, loggedUser } = this.props;
         return (
             isAuth ? 
                 <Card fluid className="free car">
@@ -31,7 +31,7 @@ class FreeCar extends Component {
                     <BuyCarModal 
                         open={this.state.open} 
                         handleClose={() => this.setState({ open: false })}
-                        hanndleSubmit={() => buyCar(id_user, id_car)}
+                        hanndleSubmit={() => buyCar(loggedUser.id_user, id_car)}
                     />
                 </Card.Content>
                 </Card>

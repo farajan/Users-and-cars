@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 const initialState = { 
   userList: {},
-  carCount: null,
+  carCount: 0,
 };
 
 export default (state = initialState, action) => {

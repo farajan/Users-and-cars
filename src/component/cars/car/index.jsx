@@ -13,11 +13,10 @@ class Car extends Component {
 
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.props.fetchCarById(id);
-
-        if(!this.props.carCount) {
-            this.props.countCars(id);
-        }
+        const { fetchCarById, countCars } = this.props;
+        fetchCarById(id, (user) => {
+            if(user) countCars(user.id_user)
+        });
     }
 
     getCar = () => {
@@ -25,9 +24,12 @@ class Car extends Component {
         return this.props.carList ? this.props.carList[id] : null;
     }
 
-    buyCar = (id_user, id_car) => this.props.buyCar(id_user, id_car)
+    buyCar = (id_user, id_car) =>
+        this.props.buyCar(id_user, id_car, (user) => {
+            if(user) this.props.countCars(user.id_user);
+        });
 
-    renderUser = ({user, price, id_car}) => {
+    renderRightContent = ({user, price, id_car}) => {
         if(!user) {
             return  <FreeCar 
                         price={price} 
@@ -65,7 +67,7 @@ class Car extends Component {
                         </Grid.Column>
                         
                         <Grid.Column>
-                            {this.renderUser(car)}
+                            {this.renderRightContent(car)}
                         </Grid.Column>
                     
                     </Grid.Row>
