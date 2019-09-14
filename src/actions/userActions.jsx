@@ -34,6 +34,12 @@ export const updateUser = (data) => dispatch => {
     });
 }
 
+export const uploadFile = (file, callback) => async () => {
+   const request = await axios.post(`${API_BASE_URL}/image/upload`, file);
+
+    callback(request.data);
+}
+
 export const buyCar = (id_user, id_car, callback) => dispatch => {
     const request = axios.post(`${API_BASE_URL}/user/${id_user}/buyCar/${id_car}`);
 

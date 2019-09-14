@@ -2,8 +2,8 @@ import React from 'react'
 import { Header, Form } from 'semantic-ui-react'
 
 const genderOptions = [
-    { key: 'm', text: 'Male', value: 'male' },
-    { key: 'f', text: 'Female', value: 'female' },
+    { key: 'm', text: 'Male', value: 'Male' },
+    { key: 'f', text: 'Female', value: 'Female' },
 ];
 
 export const SelectSex = ({handleChange}) => (

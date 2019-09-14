@@ -32,22 +32,22 @@ class RegisterForm extends Component {
     };
 
     handleClick = () => {
-        this.props.nextStep();
-        // const { firstName, lastName, email, password } = this.state;
-        // const user = { 
-        //     "firstName": firstName,
-        //     "lastName": lastName,
-        //     "email": email,
-        //     "password": password
-        //  };
+        const { firstName, lastName, email, password } = this.state;
+        const user = { 
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "password": password
+         };
 
-        // this.props.register(user, (success) => {
-        //     if(success) {
-        //         this.signIn(email, password)
-        //     } else {
-        //         this.setState({showError: true});
-        //     }
-        //  });
+        this.props.register(user, (success) => {
+            if(success) {
+                this.props.nextStep();
+                this.signIn(email, password)
+            } else {
+                this.setState({showError: true});
+            }
+         });
     };
 
     validateForm = () => {
@@ -118,7 +118,7 @@ class RegisterForm extends Component {
                         fluid 
                         color='green' 
                         size='large' 
-                        // disabled={!this.validateForm()}
+                        disabled={!this.validateForm()}
                         onClick={() => this.handleClick()}
                     >
                             Create an account

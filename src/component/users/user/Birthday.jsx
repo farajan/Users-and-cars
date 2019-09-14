@@ -3,6 +3,7 @@ import { Icon, Header } from 'semantic-ui-react'
 import { formatDate } from '../../../utils';
 
 const Birthday = ({birthday}) => (
+    birthday ?
     <Header as='h5'>
         <Header.Content>
         Birthday
@@ -12,6 +13,7 @@ const Birthday = ({birthday}) => (
         </Header.Subheader>
         </Header.Content>
     </Header>
+    : null
 );
 
 

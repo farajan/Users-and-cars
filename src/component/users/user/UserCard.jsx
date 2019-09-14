@@ -13,14 +13,14 @@ const UserCard = ({user, carCount, setActiveLink}) => (
     <Card.Content 
       header={`${user.firstName} ${user.lastName}`} 
       as={Link} to={`${LINK_USER.link}/${user.id_user}`}
-      onClick={() => setActiveLink(LINK_USER.name)}
+      onClick={() => setActiveLink ? setActiveLink(LINK_USER.name) : null}
     />
 
     <Card.Content>
       <Card.Meta>
-        <Contact phone={'+420 7775 216 775'} email={user.email}/>
+        <Contact phone={user.phone} email={user.email}/>
         <Birthday birthday={user.birthday} />
-        <Sex sex={'Male'}/>
+        <Sex sex={user.sex}/>
       </Card.Meta>
     </Card.Content>
 
