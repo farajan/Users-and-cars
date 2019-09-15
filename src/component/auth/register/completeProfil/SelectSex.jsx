@@ -1,9 +1,10 @@
 import React from 'react'
 import { Header, Form } from 'semantic-ui-react'
+import { SEX_FEMALE, SEX_MALE } from '../../../../constants';
 
 const genderOptions = [
-    { key: 'm', text: 'Male', value: 'Male' },
-    { key: 'f', text: 'Female', value: 'Female' },
+    { key: 'm', text: 'Male', value: SEX_MALE },
+    { key: 'f', text: 'Female', value: SEX_FEMALE },
 ];
 
 export const SelectSex = ({handleChange}) => (

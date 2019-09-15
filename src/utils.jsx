@@ -1,5 +1,5 @@
 export const capitalizeFirstLetter = (string) =>
-    string.charAt(0).toUpperCase() + string.slice(1)
+    string.charAt(0).toUpperCase() + string.toLowerCase().slice(1)
 
 export const formatLongNumber = (number) =>
     (number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')

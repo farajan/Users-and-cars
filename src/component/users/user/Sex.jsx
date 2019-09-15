@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon, Header } from 'semantic-ui-react'
+import { capitalizeFirstLetter } from '../../../utils';
 
 const Sex = ({sex}) => (
     sex ?
@@ -8,7 +9,7 @@ const Sex = ({sex}) => (
         Sex
         <Header.Subheader>
             <Icon name={sex.toLowerCase()} />
-            {` ${sex}`}
+            {` ${capitalizeFirstLetter(sex)}`}
         </Header.Subheader>
         </Header.Content>
     </Header>

@@ -14,6 +14,9 @@ export const SUCCESS_MESSAGE = 0;
 export const WARNING_MESSAGE = 1;
 export const ERROR_MESSAGE = 2;
 
+export const SEX_MALE = 'MALE';
+export const SEX_FEMALE = 'FEMALE';
+
 /*--------------------------------------- Default user's photo ----------------------------------------*/
 export const DEFAULT_PHOTO_MALE = 'https://react.semantic-ui.com/images/avatar/large/matthew.png';
 export const DEFAULT_PHOTO_FEMALE = 'https://react.semantic-ui.com/images/avatar/large/jenny.jpg';
