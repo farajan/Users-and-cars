@@ -13,3 +13,8 @@ export const LINK_SETTINGS = { name: 'Settings', link: '/settings' };
 export const SUCCESS_MESSAGE = 0;
 export const WARNING_MESSAGE = 1;
 export const ERROR_MESSAGE = 2;
+
+/*--------------------------------------- Default user's photo ----------------------------------------*/
+export const DEFAULT_PHOTO_MALE = 'https://react.semantic-ui.com/images/avatar/large/matthew.png';
+export const DEFAULT_PHOTO_FEMALE = 'https://react.semantic-ui.com/images/avatar/large/jenny.jpg';
+export const DEFAULT_PHOTO_UNISEX = '/default_user.png';

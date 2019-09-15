@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import { Menu, Image, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../../actions/authActions'
 import { setActiveLink } from '../../../actions/urlActiveLinkActions'
 import { LINK_SETTINGS, LINK_USER } from '../../../constants'
+import CustomImage from '../../customUI/CustomImage';
 
 class LoggedUser extends Component {
 
     render() {
-        const { signOut, user: { id_user, firstName, lastName}, setActiveLink, activeLink } = this.props;
+        const { signOut, user: { id_user, firstName, lastName, photo, sex }, setActiveLink, activeLink } = this.props;
         const trigger = (
             <span>
-                <Image avatar src='https://react.semantic-ui.com/images/avatar/large/matthew.png' /> {`${firstName} ${lastName}`}
+                <CustomImage sex={sex} photo={photo} avatar /> {`${firstName} ${lastName}`}
             </span>
         )
 

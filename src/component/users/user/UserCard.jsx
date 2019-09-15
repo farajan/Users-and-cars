@@ -5,11 +5,14 @@ import Birthday from './Birthday'
 import Sex from './Sex'
 import ExtraContent from './ExtraContent'
 import { Link } from 'react-router-dom'
-import { LINK_USER } from '../../../constants';
+import { LINK_USER } from '../../../constants'
+import CustomImage from '../../customUI/CustomImage'
 
 const UserCard = ({user, carCount, setActiveLink}) => (
   <Card fluid>
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+
+    <CustomImage sex={user.sex} photo={user.photo} wrapped ui/>
+    
     <Card.Content 
       header={`${user.firstName} ${user.lastName}`} 
       as={Link} to={`${LINK_USER.link}/${user.id_user}`}
